@@ -1,0 +1,24 @@
+---
+# vars file for tech_asgn
+
+bw_groups:
+ - name: Marvel
+ - name: DC
+ - name: wheel
+bw_users:
+ - name: t.stark
+   comment: Tony Stark
+   groups: wheel,Marvel
+ - name: b.banner
+   comment: Bruce Banner
+   groups: Marvel
+ - name: s.rogers
+   comment: Steve Rogers
+   groups: Marvel
+ - name: c.kent
+   comment: Clark Kent
+   groups: wheel,DC
+ - name: b.wayne
+   comment: Bruce Wayne
+   groups: DC
+

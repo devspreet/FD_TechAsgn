@@ -1,0 +1,4 @@
+[local]
+localhost ansible_connection=local
+
+#You can add as many hosts as you want in hosts file

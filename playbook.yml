@@ -1,0 +1,7 @@
+---
+- name: all
+  hosts: all
+  become: true
+  become_method: sudo
+  roles:
+   - tech_asgn

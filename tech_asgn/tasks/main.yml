@@ -1,0 +1,42 @@
+---
+
+# tasks file for tech_asgn
+- name: Include variables file
+  include_vars: main.yml
+
+- name: Creating groups
+  group:
+    name: "{{ item.name }}"
+    state: present 
+  with_items: "{{ bw_groups }}"
+
+- name: Creating Users and assigning the groups
+  user:
+    name: "{{ item.name }}"
+    comment: "{{ item.comment }}"
+    state: present
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ bw_users }}"
+
+
+- name: Ensure packages
+  package: 
+    name: "{{ item }}" 
+    state: present
+  with_items:
+   - bzip2
+   - vim
+   - git
+  
+- name: get python-3.7.5 url
+  get_url:
+    url: https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz
+    dest: /etc/Python-3.7.5.tgz
+
+- name: extract python-3.7.5
+  unarchive:
+    src: /etc/Python-3.7.5.tgz
+    dest: /etc
+    remote_src: yes
+
