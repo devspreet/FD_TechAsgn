@@ -1,31 +1,57 @@
-Role Name
+tech_asgn
 =========
 
-A brief description of the role goes here.
+Creates two groups: Marvel and DC
 
-Requirements
-------------
+Creates five users and assigns it to specific groups
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Installs packages:
+   - bzip2
+   - vim
+   - git
+
+Downloads and extracts tgz file
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Role variables defined in vars/main.yml:
 
-Dependencies
-------------
+bw_groups:
+ - name: Marvel
+   gid: 1
+ - name: DC
+   gid: 2
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+bw_users:
+ - name: t.stark
+   comment: Tony Stark
+   groups: wheel,Marvel
+ - name: b.banner
+   comment: Bruce Banner
+   group: Marvel
+ - name: s.rogers
+   comment: Steve Rogers
+   group: Marvel
+ - name: c.kent
+   comment: Clark Kent
+   groups: wheel,DC
+ - name: b.wayne
+   comment: Bruce Wayne
+   group: DC
+
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+     ---
+        - name: all
+        hosts: all
+        become: true
+        become_method: sudo
+        roles:
+         - common_FD
 
 License
 -------
@@ -35,4 +61,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Sukhpreet kaur
