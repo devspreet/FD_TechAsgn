@@ -12,6 +12,8 @@ Installs packages:
 
 Downloads and extracts tgz file
 
+Execute the playbook by running ansible-playbook playbook.yml
+
 Role Variables
 --------------
 
@@ -42,7 +44,7 @@ bw_users:
 
 
 
-Example Playbook
+Playbook
 ----------------
 
      ---
@@ -51,7 +53,7 @@ Example Playbook
         become: true
         become_method: sudo
         roles:
-         - common_FD
+         - tech_asgn
 
 License
 -------
